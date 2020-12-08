@@ -1,0 +1,16 @@
+.user_info_card {
+  width: 170px;
+  background-color: burlywood;
+  height: 200px;
+  right: 0;
+  top:0;
+  padding: 0;
+  margin: 0;
+  float: right;
+  transform: translateY(-130%);
+  transition: transform 0.3s ease-out;
+}
+.show_card {
+  transform: translateY(0%);
+
+}

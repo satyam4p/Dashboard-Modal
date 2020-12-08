@@ -1,0 +1,29 @@
+.toggle_button{
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;;
+  justify-content: space-around;
+  height: 30px;
+  width: 28px;
+  padding: 0px 0px 0px 5px;
+  margin: 0px;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+
+}
+.toggle_button :hover{
+  border: none;  
+  outline: none;
+}
+.toggle_button :active{
+  border: none;
+  outline: none;
+}
+
+.toggle_button_bar{
+  background-color: white;
+  width: inherit;
+  height: 3px;
+
+}
