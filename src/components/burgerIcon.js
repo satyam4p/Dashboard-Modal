@@ -3,7 +3,6 @@ import '../styles/burgerIcon.scss';
 
 
 const Burger = props =>{
-
   
   return(
       <button className='toggle_button' onClick={props.click}>

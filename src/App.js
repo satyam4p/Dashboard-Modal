@@ -4,6 +4,7 @@ import UserInfoCard from './components/userInfoCard';
 import Navbar from './components/navbar';
 import Drawer from './components/drawer';
 import BackDrop from './components/backdrop';
+import Content from './components/contentPage';
 function App() {
 
   const [toggleDrawer,setToggleDrawer] = useState(false);
@@ -24,16 +25,17 @@ function App() {
   const handleShowUserInfo =()=>{
     setShow(!show);
   }
-  let showInfoCard;
-  if(show){
-    showInfoCard = <UserInfoCard />
+  const pageContentClickHandle=()=>{
+    setShow(false)
   }
+ 
   return (
     <div className="App">
       <Navbar toggleDrawer = {toggleDrawerHandler} showInfo = {handleShowUserInfo}/>
       <UserInfoCard toggleUserInfo = {show}/>
       <Drawer show = {toggleDrawer}/>
       {backDrop}
+      <Content handleClick = {pageContentClickHandle}/>
     </div>
   );
 }

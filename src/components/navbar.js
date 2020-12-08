@@ -8,7 +8,7 @@ return(
   <div className='navbar'>
     <Burger click = {props.toggleDrawer}/> 
     <div className='spacer'/>
-    <UserInfo show = {props.showInfo}/>
+    <UserInfo show = {props.showInfo} name='satyam' />
   </div>
 )
 }

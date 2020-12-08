@@ -10,7 +10,19 @@ const UserInfoCard = (props) =>{
   }
 
   return(
-    <div className={infoCardClasses}>  
+    <div className={infoCardClasses}>
+      <p className='infoCard_item'>
+        Settings
+      </p>
+      <hr className='hr__tag'/>
+      <p className='infoCard_item'>
+        Profile
+      </p>
+      <hr className='hr__tag'/>
+      <p className='infoCard_item'>
+        Logout
+      </p>
+    
     </div>
 
   );

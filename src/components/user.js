@@ -6,10 +6,13 @@ import '../styles/userInfo.scss'
 const UserInfo = props => {
 
   return (
-    <div>
+    <div className='user_info_div'>
     <button className='user_info' onClick={props.show}>
       <FaRegUser size={22} color="white"/>
     </button>
+    <p className='user_name'>
+      {props.name}
+      </p>
     </div>
 
   )

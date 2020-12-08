@@ -1,16 +1,38 @@
 .user_info_card {
   width: 170px;
-  background-color: burlywood;
-  height: 200px;
+  background-color: rgba($color: #dad0ff, $alpha: 1.0);
+  height: 140px;
   right: 0;
   top:0;
   padding: 0;
-  margin: 0;
+  margin-right: 15px;
+  margin-top: 2px;
   float: right;
   transform: translateY(-130%);
   transition: transform 0.3s ease-out;
+  border-radius: 2%;
+  box-shadow: 0 0 2px 0.3px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  z-index: 50;
+  position: relative;
 }
 .show_card {
   transform: translateY(0%);
+}
 
+.infoCard_item {
+  padding: 0px;
+  margin: 0px 0px 0px 55px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 500;
+  font-family: 'Segoe UI';
+}
+
+.hr__tag {
+  padding: 0px;
+  width: 150px;
+  margin-left: 10px;
 }
