@@ -12,15 +12,15 @@ const UserInfoCard = (props) =>{
   return(
     <div className={infoCardClasses}>
       <p className='infoCard_item'>
-        Settings
+        <a href='/'>Settings</a>
       </p>
       <hr className='hr__tag'/>
       <p className='infoCard_item'>
-        Profile
+        <a href='/'>Profile</a>
       </p>
       <hr className='hr__tag'/>
       <p className='infoCard_item'>
-        Logout
+       <a href='/'>Logout</a>
       </p>
     
     </div>
