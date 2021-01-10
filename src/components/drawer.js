@@ -10,7 +10,7 @@ const Drawer = props =>{
 
   return(
     <div className={drawer_classes}>
-      <ul >
+      <ul>
         <li><a href="/">Products</a></li>
         <li><a href="/">Revenue</a></li>
         <li><a href="/">Analysis</a></li>

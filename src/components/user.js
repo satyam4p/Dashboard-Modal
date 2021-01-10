@@ -10,7 +10,7 @@ const UserInfo = props => {
     <button className='user_info' onClick={props.show}>
       <FaRegUser size={22} color="white"/>
     </button>
-    <p className='user_name'>
+    <p className= 'user_name'>
       {props.name}
       </p>
     </div>
