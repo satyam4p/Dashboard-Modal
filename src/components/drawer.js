@@ -28,8 +28,6 @@ const Drawer = props =>{
       </div>
     </div>
   )
-
-
 }
 
 export default Drawer
