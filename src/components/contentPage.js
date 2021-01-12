@@ -5,41 +5,28 @@ import {Button} from 'reactstrap';
 import {BubbleSort} from '../algorithms/bubbleSort';
 import {Shuffle} from '../algorithms/shuffle';
 const Content =(props)=>{
-  const NUMBER_OF_ARRAY_BARS = 40;
-  
-  const [dataValue,setDataValue] = React.useState([]);
-  const [Sorted,setSorted] = React.useState(false);
-  //create ref for chatInstance
-  let reference = useRef(null);
+//number of bars in the graph
+const NUMBER_OF_ARRAY_BARS = 30;
+const [dataValue,setDataValue] = useState([]);
+const [Sorted,setSorted] = useState(false);
+//create ref for chatInstance
+let chartReference = useRef(null);
 
-  useEffect(() => {
-    resetArray();
-  }, []);
-
-  const resetArray=()=>{
-    const array=Shuffle([...Array(NUMBER_OF_ARRAY_BARS).keys()].splice(1));
-    setDataValue(array);
-    setSorted(false);
-  }
-
-  // handlers
-  const handleClickBubbleSort = (event,reference) =>{
-  event.preventDefault();
-  console.log(typeof dataValue," dataValue",dataValue);
-  // setDataValue(BubbleSort(dataValue,reference));
-  BubbleSort(reference);
-  console.log(dataValue);
-  setSorted(true);  
+//reeset or shuffle the array once the screen reloads or loads
+useEffect(() => {
+  resetArray();
+}, []);
+const resetArray=()=>{
+  //the object of array should be converted to array
+  const array=Shuffle([...Array(NUMBER_OF_ARRAY_BARS).keys()].splice(1));
+  setDataValue(array);
+  setSorted(false);
 }
-  const swap =(idx1,idx2,array)=>{
-    let temp = array[idx1];
-    array[idx1] = array[idx2];
-    array[idx2] = temp;
-  }
-//random values generator method 
-function randomIntFromInterval(min, max) {
-  // min and max included
-  return Math.floor(Math.random() * (max - min + 1) + min);
+// handlers
+const handleClickBubbleSort = (event,chartReference) =>{
+event.preventDefault();
+BubbleSort(chartReference);
+setSorted(true);
 }
   return(
     <div className='content_page'> 
@@ -47,11 +34,13 @@ function randomIntFromInterval(min, max) {
         <div className='graph'>
         <Bar 
         data= {{
+          /*the chart library accepts only pure array and while setting up the state 
+           the dataValue object is converted to array*/
               labels:dataValue,
               datasets:[
               {
                 data: dataValue,
-                backgroundColor: [...Array(dataValue.length).keys()].map(() => {
+                backgroundColor: dataValue.map(() => {
                   return Sorted ? '#7cc746' : 'rgb(255, 99, 132)';
                 }),
                 borderWidth:1
@@ -67,15 +56,22 @@ function randomIntFromInterval(min, max) {
                       },
                     },
                   ],
+                 xAxes: [{
+                    ticks: {
+                        display: false //this will remove only the label
+                    }
+                }]
                 },
               }
               }
-        ref={reference}
+        /*ref represents the chart instance
+        which will be used to change and compare adta value for sorting*/
+        ref={chartReference}
         height={140}
         />  
         </div>
         <Button onClick = {resetArray}>Genrate New Graph</Button>
-        <Button onClick = {(e)=>{handleClickBubbleSort(e,reference)}}>Bubble Sort</Button>
+        <Button onClick = {(e)=>{handleClickBubbleSort(e,chartReference)}}>Bubble Sort</Button>
     </div>
   )
 }
