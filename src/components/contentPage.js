@@ -14,7 +14,7 @@ let chartReference = useRef(null);
 
 //reeset or shuffle the array once the screen reloads or loads
 useEffect(() => {
-  resetArray();
+    resetArray();
 }, []);
 const resetArray=()=>{
   //the object of array should be converted to array
@@ -23,10 +23,15 @@ const resetArray=()=>{
   setSorted(false);
 }
 // handlers
-const handleClickBubbleSort = (event,chartReference) =>{
-event.preventDefault();
-BubbleSort(chartReference);
-setSorted(true);
+    const handleClickBubbleSort = (event, chartReference) => {
+        setSorted(false);
+        event.preventDefault();
+        //Calls setting sorted data and setting color after sort is done
+        BubbleSort(chartReference)
+            .then((sortedDataValue) => {
+                setDataValue(sortedDataValue);
+                setSorted(true);
+            });
 }
   return(
     <div className='content_page'> 
