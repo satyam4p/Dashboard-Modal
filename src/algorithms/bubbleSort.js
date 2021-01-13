@@ -34,6 +34,12 @@ export const BubbleSort = async reference =>{
         chart.update();
         counter++;
     }
+    //change colors of bars left when sorting finishes
+    for (let i = 0; i < dataArray.length - counter; i++) {
+        colors[i] = '#7cc746';
+    }
+    chart.data.datasets[0].backgroundColor = colors;
+    chart.update();
 }
 const sleep = milliseconds => {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
