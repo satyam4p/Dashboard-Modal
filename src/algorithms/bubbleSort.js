@@ -8,33 +8,36 @@ export const BubbleSort = async reference =>{
     const meta = chart.getDatasetMeta(0);
     const colors = chart.data.datasets[0].backgroundColor;
     const defaultColor = 'rgb(255, 99, 132)';
-    let isSorted = false;
-    let counter =0;
-    while(!isSorted){
-        isSorted =true;
-        for(let i=0;i<dataArray.length - 1 - counter; i++){
-            //identifier for current bar in graph
-            colors[i] = '#991fc4';
-            chart.data.datasets[0].backgroundColor = colors;
-            //update the bar color in graph for visual
-            chart.update();
-            await sleep(0.3);
-            if(dataArray[i] > dataArray[i+1]){
-                swap(i,i+1,dataArray,meta);
-                //change the color of the bar which is greater than the current array
-                colors[i + 1] = '#991fc4';
-                isSorted = false;
-            }
-            colors[i] = defaultColor;
-            chart.data.datasets[0].backgroundColor = colors;
-        }
-        
-        colors[dataArray.length - 1 - counter] = '#7cc746';
-        chart.data.datasets[0].backgroundColor = colors;
-        chart.update();
-        counter++;
+    
+    let tmp;
+     for (let i = 0; i < dataArray.length; i++) {
+    for (let j = 0; j < dataArray.length - i - 1; j++) {
+      colors[j] = '#991fc4';
+      chart.data.datasets[0].backgroundColor = colors;
+
+      chart.update();
+      await sleep(10);
+
+      if (dataArray[j] > dataArray[j + 1]) {
+        tmp = dataArray[j];
+        dataArray[j] = dataArray[j + 1];
+        dataArray[j + 1] = tmp;
+
+        tmp = meta.data[j];
+        meta.data[j] = meta.data[j + 1];
+        meta.data[j + 1] = tmp;
+        colors[j + 1] = '#991fc4';
+      }
+
+      colors[j] = defaultColor;
+      chart.data.datasets[0].backgroundColor = colors;
     }
-}
+    colors[dataArray.length - i - 1] = '#7cc746';
+    chart.data.datasets[0].backgroundColor = colors;
+    chart.update();
+  }
+};
+
 const sleep = milliseconds => {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
 };
