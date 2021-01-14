@@ -31,7 +31,6 @@ const resetArray=()=>{
         //Calls setting sorted data and setting color after sort is done
         BubbleSort(chartReference)
             .then((sortedDataValue) => {
-                setDataValue(sortedDataValue);
                 setSorted(true);
             });
 }
