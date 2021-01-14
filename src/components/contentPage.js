@@ -4,9 +4,11 @@ import { Bar } from 'react-chartjs-2';
 import {Button} from 'reactstrap';
 import {BubbleSort} from '../algorithms/bubbleSort';
 import {Shuffle} from '../algorithms/shuffle';
+import {QuickSort} from '../algorithms/quickSort';
+import {} from '../algorithms/mergeSort';
 const Content =(props)=>{
 //number of bars in the graph
-const NUMBER_OF_ARRAY_BARS = 30;
+const NUMBER_OF_ARRAY_BARS = 70;
 const [dataValue,setDataValue] = useState([]);
 const [Sorted,setSorted] = useState(false);
 //create ref for chatInstance
@@ -33,6 +35,13 @@ const resetArray=()=>{
                 setSorted(true);
             });
 }
+const handleQuickSort=(event,reference)=>{
+  event.preventDefault();
+  // console.log("reference for bubble sort: ",reference);
+  QuickSort(reference);
+
+
+}
   return(
     <div className='content_page'> 
         
@@ -43,7 +52,7 @@ const resetArray=()=>{
            the dataValue object is converted to array*/
               labels:dataValue,
               datasets:[
-              {
+              { 
                 data: dataValue,
                 backgroundColor: dataValue.map(() => {
                   return Sorted ? '#7cc746' : 'rgb(255, 99, 132)';
@@ -53,6 +62,9 @@ const resetArray=()=>{
               ]}
               }
         options={{
+                legend: {
+                  display:false
+                },
                 scales: {
                   yAxes: [
                     {
@@ -77,8 +89,8 @@ const resetArray=()=>{
         </div>
         <Button onClick = {resetArray}>Genrate New Graph</Button>
         <Button onClick = {(e)=>{handleClickBubbleSort(e,chartReference)}}>Bubble Sort</Button>
+        <Button onClick = {(e)=>{handleQuickSort(e,chartReference)}}>QuickSort</Button>
     </div>
   )
 }
-
 export default Content;
