@@ -10,8 +10,8 @@ export const QuickSort=async (ChartReference)=>{
     console.log("background color:: ",colors,"meta data:: ",meta);
     await quickSortHelper(dataValue,0,dataValue.length-1,colors,meta,chart);
     console.log("sorted result:: ",dataValue);
+    return dataValue;
 }
-
 const quickSortHelper=  async (array,startIdx,endIdx,colors,meta,chart)=>{
     return new Promise( async (resolve, reject)=>{
         if(chart !== undefined){

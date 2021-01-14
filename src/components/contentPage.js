@@ -8,7 +8,7 @@ import {QuickSort} from '../algorithms/quickSort';
 import {} from '../algorithms/mergeSort';
 const Content =(props)=>{
 //number of bars in the graph
-const NUMBER_OF_ARRAY_BARS = 70;
+const NUMBER_OF_ARRAY_BARS = 20;
 const [dataValue,setDataValue] = useState([]);
 const [Sorted,setSorted] = useState(false);
 //create ref for chatInstance
@@ -31,13 +31,18 @@ const resetArray=()=>{
         //Calls setting sorted data and setting color after sort is done
         BubbleSort(chartReference)
             .then((sortedDataValue) => {
+                setDataValue(sortedDataValue);
                 setSorted(true);
             });
 }
 const handleQuickSort=(event,reference)=>{
   event.preventDefault();
   // console.log("reference for bubble sort: ",reference);
-  QuickSort(reference);
+  QuickSort(reference)
+    .then((sortedArray)=>{
+      setDataValue(sortedArray);
+      setSorted(true);
+    });
 
 
 }

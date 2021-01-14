@@ -36,6 +36,7 @@ export const BubbleSort = async reference =>{
     chart.data.datasets[0].backgroundColor = colors;
     chart.update();
   }
+  return dataArray;
 };
 
 const sleep = milliseconds => {
