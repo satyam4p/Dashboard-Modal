@@ -1,5 +1,3 @@
-
-
 export const QuickSort=async (ChartReference)=>{
     console.log("chart ref in quick:: ",ChartReference);
     const chart = ChartReference.current.chartInstance;
@@ -25,25 +23,25 @@ const quickSortHelper=  async (array,startIdx,endIdx,colors,meta,chart)=>{
             let rightIdx = endIdx;
             while(rightIdx >= leftIdx){
                 if(array[leftIdx] > array[pivotIdx] && array[rightIdx] < array[pivotIdx]){
-                    swap(leftIdx,rightIdx,array,meta);
+                    swap(leftIdx,rightIdx,array,meta,colors);
                 } 
                 if(array[leftIdx] <= array[pivotIdx]) leftIdx++;
                 if(array[rightIdx] >= array[pivotIdx]) rightIdx--;
             }
-            swap(rightIdx,pivotIdx,array,meta);
+            swap(rightIdx,pivotIdx,array,meta,colors);
             chart.update();
             console.log("chart object data:: ",chart.config.data.datasets[0].data," array value:: ",array);
             const leftSubArrayIsSmaller = rightIdx - 1 - startIdx < endIdx -  (rightIdx + 1);
             if(leftSubArrayIsSmaller){
                 quickSortHelper(array, startIdx, rightIdx -1,colors,meta,chart);
-                chart.update();
+                // chart.update();
                 quickSortHelper(array, rightIdx + 1, endIdx,colors,meta,chart );
-                chart.update();
+                // chart.update();
             }else{
                 quickSortHelper(array, rightIdx + 1, endIdx,colors,meta,chart );
-                chart.update();
+                // chart.update();
                 quickSortHelper(array, startIdx, rightIdx - 1,colors,meta,chart);
-                chart.update();
+                // chart.update();
             }
         }else{
             console.log("chart object :: ",chart);
@@ -56,23 +54,22 @@ const sleep = milliseconds => {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
 };
 
-const swap =(leftIdx,rightIdx,array,meta)=>{
+const swap =(leftIdx,rightIdx,array,meta,colors)=>{
     return new Promise((resolve,reject)=>{
         if(meta !== undefined){
-            let temp = array[rightIdx];
+        let temp = array[rightIdx];
         array[rightIdx] = array[leftIdx];
         array[leftIdx] = temp;
         let temp1 = meta.data[rightIdx];
         meta.data[rightIdx] = meta.data[leftIdx];
         meta.data[leftIdx] = temp1;
+        colors[rightIdx] = "#29ba06";
+        colors[leftIdx] = "#29ba06";
         resolve();
         }
         else{
             console.log("meta value:: ",meta);
             reject("some trouble with meta object");
         }
-        
     });
-   
-
 }

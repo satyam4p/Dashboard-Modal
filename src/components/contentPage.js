@@ -8,7 +8,7 @@ import {QuickSort} from '../algorithms/quickSort';
 import {} from '../algorithms/mergeSort';
 const Content =(props)=>{
 //number of bars in the graph
-const NUMBER_OF_ARRAY_BARS = 20;
+const NUMBER_OF_ARRAY_BARS = 70;
 const [dataValue,setDataValue] = useState([]);
 const [Sorted,setSorted] = useState(false);
 //create ref for chatInstance
