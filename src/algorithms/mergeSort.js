@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+
 
 export const MergeSort=(reference)=>{
     console.log("reference in algo:: ",reference);
@@ -61,6 +61,3 @@ const doMerge = async (mainArray,startIndex,middleIndex,endIndex,auxArray,backgr
     
 }
 
-const sleep = milliseconds => {
-  return new Promise(resolve => setTimeout(resolve, milliseconds));
-};

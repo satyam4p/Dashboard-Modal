@@ -42,12 +42,3 @@ export const BubbleSort = async reference =>{
 const sleep = milliseconds => {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
 };
-const swap =(idx1,idx2,array,meta)=>{
-    let temp = array[idx1];
-    array[idx1] = array[idx2];
-    array[idx2] = temp;
-    //swap the meta data 
-    let temp1 = meta.data[idx1];
-    meta.data[idx1] = meta.data[idx2];
-    meta.data[idx2] = temp1;
-}
