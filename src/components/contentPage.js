@@ -5,10 +5,10 @@ import {Button} from 'reactstrap';
 import {BubbleSort} from '../algorithms/bubbleSort';
 import {Shuffle} from '../algorithms/shuffle';
 import {QuickSort} from '../algorithms/quickSort';
-import {} from '../algorithms/mergeSort';
+import {MergeSort} from '../algorithms/mergeSort';
 const Content =(props)=>{
 //number of bars in the graph
-const NUMBER_OF_ARRAY_BARS = 70;
+const NUMBER_OF_ARRAY_BARS = 101;
 const [dataValue,setDataValue] = useState([]);
 const [Sorted,setSorted] = useState(false);
 //create ref for chatInstance
@@ -43,8 +43,11 @@ const handleQuickSort=(event,reference)=>{
       setDataValue(sortedArray);
       setSorted(true);
     });
-
-
+}
+const handleMergeSort=(e,reference)=>{
+  e.preventDefault();
+  
+  MergeSort(reference);
 }
   return(
     <div className='content_page'> 
@@ -94,6 +97,7 @@ const handleQuickSort=(event,reference)=>{
         <Button onClick = {resetArray}>Genrate New Graph</Button>
         <Button onClick = {(e)=>{handleClickBubbleSort(e,chartReference)}}>Bubble Sort</Button>
         <Button onClick = {(e)=>{handleQuickSort(e,chartReference)}}>QuickSort</Button>
+        <Button onClick = {(e)=>{handleMergeSort(e,chartReference)}}>Merge Sort</Button>
     </div>
   )
 }
